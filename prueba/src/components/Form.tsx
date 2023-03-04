@@ -1,7 +1,7 @@
 import { useForm } from '@mantine/form';
 import { TextInput, Button, Box, Title, Grid } from '@mantine/core';
 
-export function FormUsers() {
+export function UsersForm() {
     const form = useForm({
         initialValues: { name: '', email: '', phone: '', text: '', cpo: '', cpd: '', length: '', width: '', height: '', weight: '' },
         validate: {
