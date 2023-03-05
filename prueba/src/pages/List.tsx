@@ -1,8 +1,8 @@
-import { Avatar, Title, Table, Group, Text, ActionIcon, Menu, ScrollArea, Card } from '@mantine/core';
+import { Avatar, Title, Table, Group, Text, ActionIcon, ScrollArea, Card } from '@mantine/core';
 import { IconTrash, } from '@tabler/icons-react';
 
 export const elements = [{
-    avatar: "", name: "CeleteJS", email: "user@mail.com", phone: "Tel:+52 55-55-55-55", cpo: 0, cpd: 0, paquete: "caja", largo: "", ancho: "", alto: "", peso: "",
+    avatar: "", name: "CeleteJS", email: "user@mail.com", phone: "Tel:+52 55-55-55-55", cpo: 0, cpd: 0, contenido: "descripcion", paquete: "caja", largo: "", ancho: "", alto: "", peso: "",
 }
 ]
 export function UsersList() {
@@ -37,6 +37,9 @@ export function UsersList() {
                 <Text fz="sm" fw={500}>Contenido del Paquete</Text>
                 <div>
                     <Text fz="sm">
+                        {element.contenido}
+                    </Text>
+                    <Text fz="sm">
                         largo:
                         {element.largo} cm
                     </Text>
@@ -54,6 +57,12 @@ export function UsersList() {
                     </Text>
                 </div>
             </td>
+
+
+
+
+
+
             <td>
                 <Group spacing={0} position="right">
                     <ActionIcon>

@@ -28,7 +28,8 @@ export function UsersForm() {
                         </Title>
                     </div>
                     <br />
-                    <form onSubmit={form.onSubmit(console.log)}>
+                    <form onSubmit={form.onSubmit((values) => console.log(values))}>
+                        {/* <form onSubmit={form.onSubmit(console.log)}> */}
 
                         <TextInput
                             withAsterisk
