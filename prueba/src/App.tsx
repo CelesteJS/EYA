@@ -1,19 +1,25 @@
-import './App.css'
-import { UsersForm } from './pages/Form'
-import { UsersList } from './pages/List';
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Routes, // instead of "Switch"
+  Route,
+} from "react-router-dom";
+import { UsersForm } from './pages/Form';
+import { UsersList } from './pages/List';
+
+
 
 function App(): JSX.Element {
   return (
     <div>
       <img src="eya.jpeg" />
-      <Router>
-        <Switch>
-          <Route exact path="/" component={UsersForm} />
-          <Route exact path="/contact" component={UsersList} />
-        </Switch>
-      </Router>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<UsersForm />} />
+          <Route path="/solicitudes" element={<UsersList />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
