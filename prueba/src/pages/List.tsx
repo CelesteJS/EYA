@@ -1,16 +1,8 @@
-import { Avatar, Title, Table, Group, Text, ActionIcon, Menu, ScrollArea } from '@mantine/core';
-import {
-    IconPencil,
-    IconMessages,
-    IconNote,
-    IconReportAnalytics,
-    IconTrash,
-    IconDots,
-} from '@tabler/icons-react';
-import { useEffect, useState } from 'react';
+import { Avatar, Title, Table, Group, Text, ActionIcon, Menu, ScrollArea, Card } from '@mantine/core';
+import { IconTrash, } from '@tabler/icons-react';
 
 export const elements = [{
-    avatar: "", name: "CeleteJS", email: "user@mail.com", phone: "Tel:+5255555555", cpo: 0, cpd: 0, paquete: "caja", largo: "", ancho: "", alto: "", peso: "",
+    avatar: "", name: "CeleteJS", email: "user@mail.com", phone: "Tel:+52 55-55-55-55", cpo: 0, cpd: 0, paquete: "caja", largo: "", ancho: "", alto: "", peso: "",
 }
 ]
 export function UsersList() {
@@ -74,20 +66,22 @@ export function UsersList() {
 
     return (
         <div>
-            <Title>SOLICITUDES</Title>
-            <ScrollArea>
-                <Table sx={{ minWidth: 800 }} verticalSpacing="md">
-                    <thead>
-                        <tr>
-                            <th>Usuario</th>
-                            <th>CP Origen</th>
-                            <th>CP Destino</th>
-                            <th>Paquete</th>
-                        </tr>
-                    </thead>
-                    <tbody>{rows}</tbody>
-                </Table>
-            </ScrollArea>
+            <Card shadow="xl" padding="lg" radius="md" withBorder>
+                <Title>Solicitudes</Title>
+                <ScrollArea>
+                    <Table sx={{ minWidth: 800 }} verticalSpacing="md">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>CP Origen</th>
+                                <th>CP Destino</th>
+                                <th>Paquete</th>
+                            </tr>
+                        </thead>
+                        <tbody>{rows}</tbody>
+                    </Table>
+                </ScrollArea>
+            </Card>
         </div>
     );
 }
