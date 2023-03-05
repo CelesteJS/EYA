@@ -15,14 +15,21 @@ export function MyTable() {
         ],
     });
     function handleDeleteRow(rowIndex: number) {
-        setTableState((prevState) => {
-            const newRows = [...prevState.rows];
-            newRows.splice(rowIndex, 1);
-            return {
-                ...prevState,
-                rows: newRows,
-            };
-        });
+        const shouldDelete = window.confirm('Estas seguro que deseas borrar este registro?');
+        if (shouldDelete) {
+            // Mensaje de confirmacion
+            setTableState((prevState) => {
+                const newRows = [...prevState.rows];
+                newRows.splice(rowIndex, 1);
+                return {
+                    ...prevState,
+                    rows: newRows,
+                    // Explicacion de la Funcion handleDeleteRow
+                    // Se utiliza el método splice para eliminar la fila correspondiente de la matriz de filas
+                    // Luego, se actualiza el estado de la tabla con la nueva matriz.
+                };
+            });
+        }
     }
     return (
         <table>
@@ -48,60 +55,3 @@ export function MyTable() {
         </table>
     );
 }
-
-// import { useState } from "react";
-
-// interface TableState {
-//     columns: string[];
-//     rows: any[][];
-// }
-
-// export function MyTable() {
-//     const [tableState, setTableState] = useState<TableState>({
-//         columns: ['Name', 'Age', 'Gender'],
-//         rows: [
-//             ['John', 30, 'Male'],
-//             ['Sarah', 25, 'Female'],
-//             ['Mike', 40, 'Male'],
-//         ],
-//     });
-//     function handleDeleteColumn(columnIndex: number) {
-//         setTableState((prevState) => {
-//             const newColumns = [...prevState.columns];
-//             newColumns.splice(columnIndex, 1);
-//             const newRows = prevState.rows.map((row) => {
-//                 const newRow = [...row];
-//                 newRow.splice(columnIndex, 1);
-//                 return newRow;
-//             });
-//             return {
-//                 columns: newColumns,
-//                 rows: newRows,
-//             };
-//         });
-//     }
-
-//     return (
-//         <table>
-//             <thead>
-//                 <tr>
-//                     {tableState.columns.map((column, index) => (
-//                         <th key={index}>
-//                             {column}
-//                             <button onClick={() => handleDeleteColumn(index)}>Delete</button>
-//                         </th>
-//                     ))}
-//                 </tr>
-//             </thead>
-//             <tbody>
-//                 {tableState.rows.map((row, index) => (
-//                     <tr key={index}>
-//                         {row.map((cell, index) => (
-//                             <td key={index}>{cell}</td>
-//                         ))}
-//                     </tr>
-//                 ))}
-//             </tbody>
-//         </table>
-//     );
-// }
