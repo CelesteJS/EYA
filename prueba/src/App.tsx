@@ -1,15 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
-import { UsersForm } from './components/Form'
-import { UsersList } from './components/List'
+import { Home } from './components'
+
 
 function App() {
 
   return (
     <div className="App">
-      <UsersForm></UsersForm>
-      <UsersList></UsersList>
+      <Home></Home>
+
+      {/* <BrowserRouter>
+        <Route path="/" element={<UsersForm />} />
+        <Route path="/solicitudes" element={<UsersList />} />
+      </BrowserRouter> */}
+
     </div>
   )
 }
