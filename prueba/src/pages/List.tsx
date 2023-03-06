@@ -1,13 +1,59 @@
-import { Avatar, Title, Table, Group, Text, ActionIcon, ScrollArea, Card } from '@mantine/core';
-import { IconTrash, } from '@tabler/icons-react';
+import { useState } from "react";
+import {
+    Avatar,
+    Title,
+    Table,
+    Group,
+    Text,
+    ActionIcon,
+    Menu,
+    ScrollArea,
+    Card,
+} from "@mantine/core";
+import { IconTrash } from "@tabler/icons-react";
 
-export const elements = [{
-    avatar: "", name: "CeleteJS", email: "user@mail.com", phone: "Tel:+52 55-55-55-55", cpo: 0, cpd: 0, contenido: "descripcion", paquete: "caja", largo: "", ancho: "", alto: "", peso: "",
+export interface Element {
+    avatar: string;
+    name: string;
+    email: string;
+    phone: string;
+    cpo: number;
+    cpd: number;
+    paquete: string;
+    largo: string;
+    ancho: string;
+    alto: string;
+    peso: string;
 }
-]
-export function UsersList() {
 
-    const rows = elements.map((element) => (
+export const initialElements: Element[] = [
+    {
+        avatar: "",
+        name: "CelesteJS",
+        email: "user@mail.com",
+        phone: "Tel:+52 55-55-55-55",
+        cpo: 0,
+        cpd: 0,
+        paquete: "caja",
+        largo: "",
+        ancho: "",
+        alto: "",
+        peso: "",
+    },
+];
+
+export function Userslist() {
+    const [elements, setElements] = useState(initialElements);
+
+    const deleteElement = (index: number) => {
+        if (window.confirm("¿Estás seguro de que quieres borrar esta fila?")) {
+            const newElements = [...elements];
+            newElements.splice(index, 1);
+            setElements(newElements);
+        }
+    };
+
+    const rows = elements.map((element, index) => (
         <tr key={element.name}>
             <td>
                 <Group spacing="sm">
@@ -26,9 +72,7 @@ export function UsersList() {
                 </Group>
             </td>
             <td>
-                <Text fz="xs">
-                    {element.cpo}
-                </Text>
+                <Text fz="xs">{element.cpo}</Text>
             </td>
             <td>
                 <Text fz="sm">{element.cpd}</Text>
@@ -36,9 +80,6 @@ export function UsersList() {
             <td>
                 <Text fz="sm" fw={500}>Contenido del Paquete</Text>
                 <div>
-                    <Text fz="sm">
-                        {element.contenido}
-                    </Text>
                     <Text fz="sm">
                         largo:
                         {element.largo} cm
@@ -57,15 +98,9 @@ export function UsersList() {
                     </Text>
                 </div>
             </td>
-
-
-
-
-
-
             <td>
                 <Group spacing={0} position="right">
-                    <ActionIcon>
+                    <ActionIcon onClick={() => deleteElement(index)}>
                         <IconTrash size="1rem" stroke={1.5} />
                     </ActionIcon>
                 </Group>
@@ -94,3 +129,4 @@ export function UsersList() {
         </div>
     );
 }
+

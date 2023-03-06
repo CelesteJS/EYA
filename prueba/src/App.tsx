@@ -4,10 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 import { UsersForm } from './pages/Form';
-import { MyTable } from "./pages/Formulario";
-import { UsersList } from './pages/List';
-
-
+import { Userslist } from "./pages/List";
 
 function App(): JSX.Element {
   return (
@@ -16,7 +13,7 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<UsersForm />} />
-          <Route path="/solicitudes" element={<MyTable />} />
+          <Route path="/solicitudes" element={<Userslist />} />
         </Routes>
       </BrowserRouter>
     </div>
